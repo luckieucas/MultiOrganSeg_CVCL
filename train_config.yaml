@@ -1,0 +1,36 @@
+gpu: "2"
+val: False 
+continue_training: True
+validation_only: False
+deterministic: Falsed
+use_compressed_data: False
+val_folder: "validation_raw"
+find_lr: False
+use_amp: False  # whether use automatic mixed precision(amp)
+label_rate: 1.0  # percent of partial labeled data
+initial_lr: 0.01
+valbest: True 
+do_semi: False
+only_do_semi: False # use semi-supervised learning only, not use partial label data
+fold: "0"
+exp:   nnUNet # CAC_multi_level_feat_epoch600_with_unlabeled_BCV # #CAC_label_rate010 #CAC_weight005
+tasks: ["100","101","102","103","104"]
+interp_order: 3
+interp_order_z: 0
+force_separate_z: "None"
+fp32: False
+npz: False
+max_num_epochs: 600
+stage_2_start_epoch: 120 # defatult: 120   began use partially labeled data to train network
+stage_3_start_epoch: 300 # defatule: 360   began do semi supervised learning
+semi_config:
+  weight_intra: 0.1
+  weight_inter: 0.0
+  pos_thresh_value: 0.6
+  selected_num: 3200
+  b: 4000
+  stride: 8
+  project_final_dim: 128
+  step_save: 2
+  partial_label_guide: True
+  use_multi_level_feature: True  # whether combine multi level feature for contrastive learning

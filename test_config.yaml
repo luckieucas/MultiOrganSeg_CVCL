@@ -1,0 +1,37 @@
+gpu: "2"
+val: False 
+continue_training: False
+validation_only: False
+deterministic: False
+use_compressed_data: False
+val_folder: "validation_raw"
+find_lr: False
+use_amp: True  # whether use automatic mixed precision(amp)
+label_rate: 1.0
+initial_lr: 0.01
+valbest: True 
+do_semi: False
+only_do_semi: False
+fold: "0"
+exp: "nnUNet_plot_curve"
+tasks: ["100","101","102","103","104"]
+interp_order: 3
+interp_order_z: 0
+force_separate_z: "None"
+fp32: False
+npz: False
+test_epoch: 278
+max_num_epochs: 600
+stage_2_start_epoch: 120
+stage_3_start_epoch: 360 # 360
+semi_config:
+  weight_intra: 0.1
+  weight_inter: 0.0
+  pos_thresh_value: 0.5
+  selected_num: 3200
+  b: 4000
+  stride: 8
+  project_final_dim: 128
+  step_save: 2
+  partial_label_guide: True
+  use_multi_level_feature: True  # whether combine multi level feature for contrastive learning
